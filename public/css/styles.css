@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
+
+html,body{
+width:100%;
+height:100%;
+margin: 0px;
+padding: 0px;
+}
+
+.wrapper{
+display: flex;
+padding:0px;
+margin:0px;
+width: 100%;
+height: 100%;
+flex-direction: column;
+background-color: white;
+justify-content: space-between;
+align-items: center;
+}
+
+/*NAVBAR BEGIN*/
+.navbar{
+margin: auto;
+margin:0px;
+display: table;
+background-color: black;
+/* height: 10px; */
+width:100%;
+height: 60px;
+text-align: center;
+/* padding-top: 15px; */
+}
+kbd{
+font-size: large;
+color: white;
+margin:0px;
+padding:0px;
+/* border: 2px red solid; */
+vertical-align: middle;
+display: table-cell;
+cursor: default;
+}
+kbd:hover{
+color:blueviolet;
+transition: ease-in-out;
+transition-duration: 500ms;
+}
+
+/*NAVBAR END*/
+
+/*main-begin*/
+.main{
+width:80%;
+height:60%;
+/* border: 2px red solid; */
+/* background-color: slateblue; */
+display: flex;
+flex-flow: column nowrap;
+justify-content: space-evenly;
+align-items: center;
+}
+.req{
+width:45%;
+height:5%;
+background-color: black;
+padding: 8px;
+margin: 0px;
+display: flex;
+flex-flow: row nowrap;
+border-radius: 5px;
+justify-content: space-between;
+align-items: center;
+}
+#location{
+font-weight: bold;
+}
+#sendReq{
+font-weight: bold;
+}
+#sendReq:hover{
+background-color: blueviolet;
+transition-timing-function: ease-in-out;
+transition-duration: 200ms;
+}
+.res{
+font-family: 'Cabin', sans-serif;
+width:50%;
+height:70%;
+background-color: white;
+transition-duration: 1000ms;
+transition-timing-function: ease-in-out;
+border-radius: 5px;
+display:flex;
+flex-flow: column nowrap;
+justify-content: space-around;
+align-items: flex-start;
+padding-left:20px;
+}
+.first{
+display: flex;
+flex-flow: row nowrap;
+justify-content: flex-start;
+align-items: center;
+/* border: 2px red solid; */
+width: 100%;
+}
+.second{
+/* border: 2px red solid; */
+width: 100%;
+}
+.third{
+width: 100%;
+/* border: 2px red solid; */
+height: 130px;
+display: flex;
+flex-flow: column wrap;
+justify-content: flex-start;
+align-items: flex-start;
+}
+.third *{
+margin: 2px;
+padding: 0px;
+}
+.first *{
+margin: 5px 15px;
+}
+/*main-end*/
+
+/*footer*/
+.footer{
+width: 100%;
+height: 60px;
+background-color: black;
+}
+/*footer-end*/
