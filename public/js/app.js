@@ -1,7 +1,7 @@
 const print = console.log
 const buttn = document.getElementById('sendReq');
 const inputField = document.getElementById('location')
-const weatherurl = "weather?location="
+const weatherurl = "weather?location="   
 const main = document.getElementsByClassName('res')[0];
 const children = Array.from(document.getElementsByClassName('childNode'));
 
