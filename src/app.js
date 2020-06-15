@@ -2,47 +2,53 @@
 const path = require('path')
 //npm
 const express = require('express')
+const hbs = require('hbs')
 //user made
 const geocode = require('./geocode.js')
 const weather = require('./weather.js')
-
+//consts
 const app = express()
 const print = console.log
+const partials = path.join(__dirname, './partial-views');
+const viewsPath = path.join(__dirname, './views')
 
 
-
+hbs.registerPartials(partials)
 app.set('view engine', 'hbs')
+app.set('views', viewsPath)
 app.use(express.static(path.join(__dirname,'../public')))
 
 app.get('/weather', (req,res) => {
-    print("here", req.query.location)
-    //call geocode.coords with location name.
-    //in the call back weather.findWeather with cooords.
-    //in the call back just store that object here then just return it.
-    // res.send({
-    //     its : "sunny"
-    // })
-    geocode.coords(req.query.location, function(err,data){
-        if(err === 1){
-            print("Unable to connect. Check your internet connection")   
-            } else if (err === 0){
-            print("Invalid location")
-            } else {
-                // print(data.center[1], data.center[0])
-                weather.findWeather(data.center[1],data.center[0], function(err,data){
-                    if(err === 1){
-                        print("Unable to connect.  Check your internet connection.")
-                        } else if (err === 0){
-                        print("invalid location ID")
-                        } else {
-                        // obj.temp = data.temperature;
-                        // obj.feels_like = data.feels_like;
-                            res.send(data)
-                        // print(`The temperature is currently: ${data.temperature}, but it feels like: ${data.feels_like}`)
-                        }
-                })
-            }
-    })
+
+    if(!req.query.location)
+        {
+        res.send({err_message : "you must provide a search term."})    
+        }
+    else
+        {
+            print("here", req.query.location)
+            geocode.coords(req.query.location, function(err,data){
+                if(err === 1){
+                    res.send({err_message : "Unable to connect to server, please check your internet connection!"})   
+                    } else if (err === 0){
+                    res.send({err_message : "No location found."}) 
+                    } else {
+                        print(data.center[1], data.center[0])
+                        weather.findWeather(data.center[1],data.center[0], function(err,data){
+                            if(err === 1){
+                                res.send({err_message : "Unable to connect to server, please check your internet connection!"})   
+
+                                } else if (err === 0){
+                                    res.send({err_message : "No location found."}) 
+
+                                } else {
+                                    res.send(data)
+                                }
+                        })
+                    }
+            })
+        }
+   
 
     // res.send({
     // weather : "sunny"
@@ -51,12 +57,27 @@ app.get('/weather', (req,res) => {
 
 
 app.get('', (req,res) => {
-    res.render('index')
+    res.render('index',{
+        title : "Home"
+    })
+})
+
+app.get('/home', (req,res) => {
+    res.render('index',{
+    title : "Home"
+    })
 })
 
 app.get('/help', (req,res) => {
     res.render('help',{
-    message : "what is your query",
+    title : "Help!",
+    message : "what is your query"
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about',{
+        title : "About Me"
     })
 })
 

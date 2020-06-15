@@ -17,7 +17,7 @@ function findCoords(place, callback){
         }
     })
 }
-
+ 
 function geoCallback(err, data){
     if(err === 1){
     print("Unable to connect. Check your internet connection")   

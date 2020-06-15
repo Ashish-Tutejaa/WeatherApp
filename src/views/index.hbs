@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>{{title}}</title>
         <link rel = "stylesheet" href = '/css/styles.css'>
+        <script src="https://kit.fontawesome.com/7e8fdaa662.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class = 'wrapper'>
-            <div class = 'navbar'> <kbd>Weather App</kbd> </div>
+            {{>navbar}}
 
             <div class = 'main'>
                 <div class = 'req'>
-                    <input id = 'location' type = 'text' style="height:90%;width: 80%;">
-                    <button id = 'sendReq'>Search</button>
+                    <input id = 'location' placeholder="please enter text here" type = 'text' style="height:90%;width: 80%;">
+                    <i id = 'sendReq' class="fas fa-search"></i>
+                    {{!-- <button id = 'sendReq'><p>Search</p></button> --}}
+                    <div class = 'dropdown'>
+                        <div class = 'childNode'><p>New York City</p></div>
+                        <div class = 'childNode'><p>Los Angeles</p></div>
+                        <div class = 'childNode'><p>Yemen</p></div>
+                        <div class = 'childNode'><p>New Delhi</p></div>
+                        <div class = 'childNode'><p>Australia</p></div>
+                        <div class = 'childNode'><p>Germany</p></div>
+                        <div class = 'childNode'><p>Kiev</p></div>
+                    </div>
                 </div>
                 <div class = 'res'>
-                    <div class = 'first'>
-                        <img id = 'pic'>
-                        <h4 style = 'font-size: 1.5em;' id = 'country'> </h4>
-                        <h4 style = 'font-size: 1em;'id = 'time'> </h4>
-                    </div>
-                    <div class = 'second'>
-                        <h4 id = 'desc'> </h4>
-                    </div>
-                    <div class = 'third'>
-                        <h4 id = 'temperature'></h4>
-                        <h4 id = 'percip'></h4>
-                        <h4 id = 'ws'></h4>
-                        <h4 id = 'hum'></h4>
-                    </div>
                 </div>
             </div>
 
-            <div class = 'footer'>
-
-            </div>
+            {{>footer}}
         </div>
 
     </body>
